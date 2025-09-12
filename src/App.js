@@ -12,7 +12,7 @@ function TodoItem(props) {
 
     function makeAsDone() {
         dispatch({
-            type: 'DONE',
+            type: 'TOGGLE_TODO',
             payload: {id: props.todo.id}
         })
     }
