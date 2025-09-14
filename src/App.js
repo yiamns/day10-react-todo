@@ -20,12 +20,6 @@ function TodoItem(props) {
         <span
             className={props.todo.done ? "todo-done" : ""}
             onClick={makeAsDone}
-            style={{
-                flex: 1,
-                padding: "8px",
-                cursor: "pointer",
-                textDecoration: props.todo.done ? "line-through" : "none"
-            }}
         >
             {props.todo.text}
         </span>
@@ -64,7 +58,6 @@ function TodoGroup() {
         <div>
             {state.map((item) => (
                 <div key={item.id} style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
-                    {/* todo文本单独一个框 */}
                     <div
                         className={item.done ? "todo-done" : ""}
                         onClick={() => dispatch({type: 'TOGGLE_TODO', payload: {id: item.id}})}
@@ -82,16 +75,15 @@ function TodoGroup() {
                     >
                         {item.text}
                     </div>
-                    {/* X按钮单独一个小框 */}
                     <button
                         onClick={() => dispatch({type: 'DELETE_TODO', payload: {id: item.id}})}
                         style={{
-                            width: "40px",
-                            height: "40px",
+                            width: "30px",
+                            height: "45px",
                             background: "#eee",
                             border: "1px solid #ccc",
                             borderRadius: "4px",
-                            fontSize: "18px",
+                            fontSize: "16px",
                             color: "#333",
                             cursor: "pointer",
                             display: "flex",
@@ -182,6 +174,5 @@ function App() {
         </div>
     );
 }
-
 
 export default App;
