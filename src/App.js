@@ -2,8 +2,9 @@
 import './App.css';
 import {useReducer} from "react";
 import {todoReducer} from "./reducers/TodoReducer";
-import {TodoGroup, TodoInput} from "./components/TodoGroup";
+import {TodoGroup} from "./components/TodoGroup";
 import {initState, TodoContext as TodoContext1} from "./contexts/TodoContext";
+import {TodoInput} from "./components/TodoInput";
 
 function App() {
     const [state, dispatch] = useReducer(todoReducer, initState);
