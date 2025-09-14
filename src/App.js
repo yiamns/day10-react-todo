@@ -3,11 +3,7 @@
 import './App.css';
 import {createContext, useContext, useReducer, useState} from "react";
 
-export const initState = [
-    {id: 1, text: "This is the first thing I need to do", done: false},
-    {id: 2, text: "This is the second thing I need to do", done: false},
-    {id: 3, text: "I already done this item", done: true},
-];
+export const initState = [];
 export const TodoContext = createContext();
 
 function TodoItem(props) {
@@ -63,31 +59,44 @@ export function todoReducer(state, action) {
 
 function TodoGroup() {
     const {state, dispatch} = useContext(TodoContext);
+    if (state.length === 0) return null;
     return (
         <div>
             {state.map((item) => (
-                <div className="todo-item" key={item.id} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    border: '1px solid #ccc',
-                    borderRadius: '4px',
-                    marginBottom: '10px',
-                    background: '#fff'
-                }}>
-                    <TodoItem todo={item} />
+                <div key={item.id} style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
+                    {/* todo文本单独一个框 */}
+                    <div
+                        className={item.done ? "todo-done" : ""}
+                        onClick={() => dispatch({type: 'TOGGLE_TODO', payload: {id: item.id}})}
+                        style={{
+                            flex: 1,
+                            padding: "12px",
+                            fontSize: "16px",
+                            background: "#fff",
+                            border: "1px solid #ccc",
+                            borderRadius: "4px",
+                            cursor: "pointer",
+                            textDecoration: item.done ? "line-through" : "none",
+                            marginRight: "8px"
+                        }}
+                    >
+                        {item.text}
+                    </div>
+                    {/* X按钮单独一个小框 */}
                     <button
                         onClick={() => dispatch({type: 'DELETE_TODO', payload: {id: item.id}})}
                         style={{
-                            marginLeft: '8px',
-                            border: 'none',
-                            background: '#eee',
-                            color: '#333',
-                            fontWeight: 'bold',
-                            fontSize: '18px',
-                            cursor: 'pointer',
-                            width: '40px',
-                            height: '40px',
-                            borderRadius: '4px'
+                            width: "40px",
+                            height: "40px",
+                            background: "#eee",
+                            border: "1px solid #ccc",
+                            borderRadius: "4px",
+                            fontSize: "18px",
+                            color: "#333",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
                         }}
                     >
                         X
@@ -97,6 +106,7 @@ function TodoGroup() {
         </div>
     );
 }
+
 
 function TodoInput() {
     const {dispatch} = useContext(TodoContext);
@@ -121,7 +131,6 @@ function TodoInput() {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Add the things you need to do today..."
                 style={{
                     flex: 1,
                     padding: "10px",
@@ -160,9 +169,12 @@ function App() {
             boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
         }}>
             <h1 style={{textAlign: "center"}}>Todo List</h1>
-            <div style={{textAlign: "center", color: "#666", marginBottom: "24px"}}>
-                Add the things you need to do today...
-            </div>
+            {/* 只在没有todo时显示提示语 */}
+            {state.length === 0 && (
+                <div style={{textAlign: "center", color: "#666", marginBottom: "24px"}}>
+                    Add the things you need to do today...
+                </div>
+            )}
             <TodoContext.Provider value={{state, dispatch}}>
                 <TodoGroup/>
                 <TodoInput/>
@@ -170,5 +182,6 @@ function App() {
         </div>
     );
 }
+
 
 export default App;
