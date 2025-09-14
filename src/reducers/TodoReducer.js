@@ -1,0 +1,24 @@
+export function todoReducer(state, action) {
+    switch (action.type) {
+        case "TOGGLE_TODO":
+            return state.map((value) => {
+                if (value.id === action.payload.id) {
+                    return {...value, done: !value.done};
+                }
+                return value;
+            });
+        case "DELETE_TODO":
+            return state.filter((todo) => todo.id !== action.payload.id);
+        case "ADD_TODO":
+            return [
+                ...state,
+                {
+                    id: state.length === 0 ? 1 : Math.max(...state.map(t => t.id)) + 1,
+                    text: action.payload.text,
+                    done: false
+                }
+            ];
+        default:
+            return state;
+    }
+}
