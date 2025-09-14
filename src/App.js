@@ -16,10 +16,10 @@ function App() {
                     Add the things you need to do today...
                 </div>
             )}
-            <TodoContext1 value={{state, dispatch}}>
+            <TodoContext1.Provider value={{state, dispatch}}>
                 <TodoGroup/>
                 <TodoInput/>
-            </TodoContext1>
+            </TodoContext1.Provider>
         </div>
     );
 }
