@@ -1,21 +1,7 @@
-.todo-item{
-  width: 320px;
-  padding: 16px;
-  border: 1px solid #000;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.todo-item .todo-done{
-  color: #aaa;
-  text-decoration: line-through;
-}
-
 .todo-container {
   max-width: 500px;
   margin: 40px auto;
   background: #f9f9f9;
-  border-radius: 8px;
   padding: 32px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -30,31 +16,60 @@ h1 {
   margin-bottom: 24px;
 }
 
-.todo-text {
-  flex: 1;
-  padding: 12px;
-  font-size: 16px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 8px;
+.todo-row {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
+/* todo 文本框：黑色边框，直角，高度和 X 按钮一致 */
+.todo-text {
+  flex: 1;
+  height: 36px; /* 和 X 按钮高度一致 */
+  padding: 0 16px;
+  border: 1.5px solid #000;
+  border-radius: 0;
+  background: #fff;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.todo-text:hover {
+  background: #f0f0f0;
+}
+
+.todo-done {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+/* X 按钮：直角，灰色底，黑色边框，高度45px */
 .todo-btn {
-  width: 30px;
-  height: 45px;
+  width: 26px;
+  height: 36px;
   background: #eee;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1.5px solid #000;
+  border-radius: 0;
   font-size: 16px;
   color: #333;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s;
 }
 
+.todo-btn:hover {
+  background: #ccc;
+}
+
+/* 输入框和 add 按钮 */
 .todo-input {
   display: flex;
   margin-top: 20px;
@@ -62,18 +77,26 @@ h1 {
 
 .todo-input input {
   flex: 1;
-  padding: 10px;
+  height: 35px;
+  padding: 0 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
+  border: 1.5px solid #000;
+  border-radius: 0;
+  margin-right: 8px;
 }
 
 .todo-input button {
+  height: 35px; /* 和输入框、todo文本框、X按钮一致 */
   padding: 0 24px;
   background: #7daaff;
   color: #fff;
-  border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0;
   font-size: 16px;
+  border: none;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.todo-input button:hover {
+  background: #4e8cff;
 }
