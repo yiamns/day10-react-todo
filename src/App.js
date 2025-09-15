@@ -1,34 +1,12 @@
 import './App.css';
-import { useReducer } from "react";
-import { todoReducer } from "./reducers/TodoReducer";
-import { initState, TodoContext as TodoContext1 } from "./contexts/TodoContext";
-import { TodoList } from "./components/TodoList";
-import {createBrowserRouter, NavLink, Outlet, RouterProvider, useRouteError} from "react-router";
-
-function DefaultLayout() {
-    return <div>
-        <header>
-            <nav>
-                <ul>
-                    <li><NavLink to={"/"}>Home</NavLink></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <Outlet />
-        </main>
-    </div>;
-}
-
-function ErrorPage() {
-    const error = useRouteError();
-    return <div>
-        {error.status === 404
-            ? <div><h1>404 not found</h1><span>Try</span></div>
-            : <div>{JSON.stringify(error)}</div>
-        }
-    </div>;
-}
+import {useReducer} from "react";
+import {todoReducer} from "./reducers/TodoReducer";
+import {initState, TodoContext} from "./contexts/TodoContext";
+import {createBrowserRouter, RouterProvider} from "react-router";
+import {ErrorPage} from "./pages/ErrorPage";
+import {HomePage} from "./pages/HomePage";
+import {DefaultLayout} from "./layouts/DefaultLayout";
+import {TodoDetailPage} from "./pages/TodoDetailPage";
 
 const routes = createBrowserRouter([
     {
@@ -38,7 +16,11 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <TodoList />
+                element: <HomePage />,
+            },
+            {
+                path: "/todos/:id",
+                element: <TodoDetailPage />
             }
         ]
     }
@@ -48,9 +30,9 @@ function App() {
     const [state, dispatch] = useReducer(todoReducer, initState);
     return (
         <div className="todo-container">
-            <TodoContext1.Provider value={{ state, dispatch }}>
+            <TodoContext.Provider value={{ state, dispatch }}>
                 <RouterProvider router={routes} />
-            </TodoContext1.Provider>
+            </TodoContext.Provider>
         </div>
     );
 }
