@@ -17,7 +17,6 @@ function App() {
             )}
             <TodoContext1.Provider value={{ state, dispatch }}>
                 <TodoList />
-                <TodoGenerator />
             </TodoContext1.Provider>
         </div>
     );

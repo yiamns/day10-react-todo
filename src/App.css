@@ -1,9 +1,8 @@
 .todo-container {
   max-width: 500px;
   margin: 40px auto;
-  background: #f9f9f9;
+  background: #fff;
   padding: 32px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 h1 {
@@ -22,7 +21,6 @@ h1 {
   margin-top: 20px;
 }
 
-/* todo 文本框：黑色边框，直角，高度和 X 按钮一致 */
 .todo-text {
   flex: 1;
   height: 36px; /* 和 X 按钮高度一致 */
@@ -49,7 +47,6 @@ h1 {
   text-decoration: line-through;
 }
 
-/* X 按钮：直角，灰色底，黑色边框，高度45px */
 .todo-btn {
   width: 26px;
   height: 36px;
@@ -69,7 +66,6 @@ h1 {
   background: #ccc;
 }
 
-/* 输入框和 add 按钮 */
 .todo-input {
   display: flex;
   margin-top: 20px;
@@ -86,7 +82,7 @@ h1 {
 }
 
 .todo-input button {
-  height: 35px; /* 和输入框、todo文本框、X按钮一致 */
+  height: 35px;
   padding: 0 24px;
   background: #7daaff;
   color: #fff;
