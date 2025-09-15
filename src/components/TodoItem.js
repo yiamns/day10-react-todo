@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Modal, Input, Button, message } from "antd";
 import {useTodoService} from "../useTodoService";
+import { EditOutlined } from '@ant-design/icons';
+
 
 export function TodoItem(props) {
     const item = props.item || props.todo;
@@ -10,6 +12,8 @@ export function TodoItem(props) {
     const onEditSuccess = props.onEditSuccess; // 新增，编辑成功后回调
     const showDetailLink = props.showDetailLink !== false;
     const noStrikethrough = props.noStrikethrough;
+    const hideDelete = props.hideDelete;
+    const hideEdit = props.hideEdit;
 
     const [editVisible, setEditVisible] = useState(false);
     const [editValue, setEditValue] = useState(item ? item.text : "");
@@ -62,22 +66,25 @@ export function TodoItem(props) {
                     {item.text}
                 </div>
                 <div className="todo-actions">
-                    <button className="danger-btn" onClick={onDelete}>
-                        X
-                    </button>
-                    <Button
-                        type="default"
-                        size="small"
-                        style={{ marginLeft: 8 }}
-                        onClick={handleEditClick}
-                    >
-                        Edit
-                    </Button>
+                    {!hideEdit && (
+                        <Button
+                            type="default"
+                            size="middle"
+                            style={{ marginRight: 8 }}
+                            onClick={handleEditClick}
+                            icon={<EditOutlined />}
+                        />
+                    )}
+                    {!hideDelete && (
+                        <button className="danger-btn" onClick={onDelete}>
+                            X
+                        </button>
+                    )}
                     {showDetailLink && (
                         <Link
                             to={`/todos/${item.id}`}
                             className="detail-link"
-                            style={{ marginLeft: 8 }}
+                            style={{marginLeft: 8}}
                         >
                             Detail
                         </Link>

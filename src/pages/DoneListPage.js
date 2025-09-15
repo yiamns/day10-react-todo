@@ -19,6 +19,8 @@ export function DoneListPage() {
                 onDelete={() => {}}
                 showDetailLink={true}
                 noStrikethrough={true}
+                hideDelete={true}
+                hideEdit={true}
             />
         </div>
     );

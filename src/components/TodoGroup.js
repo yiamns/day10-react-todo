@@ -2,7 +2,7 @@ import React from "react";
 import { TodoItem } from "./TodoItem";
 
 export function TodoGroup(props) {
-    const { todos, onToggle, onDelete, onEditSuccess, showDetailLink, noStrikethrough } = props;
+    const { todos, onToggle, onDelete, onEditSuccess, showDetailLink, noStrikethrough, hideDelete, hideEdit } = props;
 
     if (!todos || todos.length === 0) return null;
     return (
@@ -17,6 +17,8 @@ export function TodoGroup(props) {
                     onEditSuccess={(id, newText) => onEditSuccess && onEditSuccess(id, newText)}
                     showDetailLink={showDetailLink}
                     noStrikethrough={noStrikethrough}
+                    hideDelete={hideDelete}
+                    hideEdit={hideEdit}
                 />
             ))}
         </div>
