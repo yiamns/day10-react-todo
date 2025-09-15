@@ -18,7 +18,7 @@ export function TodoItem(props) {
                 {item.text}
             </div>
             {showDetailLink && (
-                <Link to={`/todos/${item.id}`} style={{ marginRight: 8 }}>Detail</Link>
+                <Link to={`/todos/${item.id}`} style={{marginRight: 8}}>Detail</Link>
             )}
             <button className="todo-btn" onClick={onDelete}>
                 X
