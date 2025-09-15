@@ -1,0 +1,8 @@
+/* src/layouts/DefaultLayout.css */
+.nav-bar {
+    margin-bottom: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
