@@ -1,7 +1,7 @@
 import './App.css';
 import {useEffect, useReducer} from "react";
 import {todoReducer} from "./reducers/TodoReducer";
-import {initState, TodoContext} from "./contexts/TodoContext";
+import {TodoContext} from "./contexts/TodoContext";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {ErrorPage} from "./pages/ErrorPage";
 import {HomePage} from "./pages/HomePage";
@@ -9,7 +9,7 @@ import {DefaultLayout} from "./layouts/DefaultLayout";
 import {TodoDetailPage} from "./pages/TodoDetailPage";
 import {DoneListPage} from "./pages/DoneListPage";
 import {AboutUs} from "./pages/AboutUs";
-import axios from "axios";
+import {api} from "./api/mockApi";
 
 const routes = createBrowserRouter([
     {
@@ -36,12 +36,6 @@ const routes = createBrowserRouter([
         ]
     }
 ]);
-
-const api = axios.create({
-    baseURL:"https://68c7acb55d8d9f5147328928.mockapi.io/",
-    headers: { "Content-Type": "application/json" },
-    timeout: 10_000
-});
 
 function App() {
     const [state, dispatch] = useReducer(todoReducer, []);
