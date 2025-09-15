@@ -15,11 +15,10 @@ export function DoneListPage() {
             <h1>Done List</h1>
             <TodoGroup
                 todos={doneTodos}
-                onToggle={() => {
-                }}
-                onDelete={() => {
-                }}
+                onToggle={() => {}}
+                onDelete={() => {}}
                 showDetailLink={true}
+                noStrikethrough={true}
             />
         </div>
     );

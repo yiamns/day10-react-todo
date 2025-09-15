@@ -2,10 +2,7 @@ import React from "react";
 import { TodoItem } from "./TodoItem";
 
 export function TodoGroup(props) {
-    const todos = props.todos;
-    const onToggle = props.onToggle;
-    const onDelete = props.onDelete;
-    const showDetailLink = props.showDetailLink;
+    const { todos, onToggle, onDelete, showDetailLink, noStrikethrough } = props;
 
     if (!todos || todos.length === 0) return null;
     return (
@@ -18,6 +15,7 @@ export function TodoGroup(props) {
                     onToggle={() => onToggle(item.id)}
                     onDelete={() => onDelete(item.id)}
                     showDetailLink={showDetailLink}
+                    noStrikethrough={noStrikethrough}
                 />
             ))}
         </div>
