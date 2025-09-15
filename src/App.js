@@ -2,40 +2,9 @@ import './App.css';
 import {useEffect, useReducer} from "react";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {ErrorPage} from "./pages/ErrorPage";
-import {HomePage} from "./pages/HomePage";
-import {DefaultLayout} from "./layouts/DefaultLayout";
-import {TodoDetailPage} from "./pages/TodoDetailPage";
-import {DoneListPage} from "./pages/DoneListPage";
-import {AboutUs} from "./pages/AboutUs";
+import {RouterProvider} from "react-router-dom";
 import {api} from "./api/mockApi";
-
-const routes = createBrowserRouter([
-    {
-        path: "/",
-        element: <DefaultLayout/>,
-        errorElement: <ErrorPage/>,
-        children: [
-            {
-                path: "/",
-                element: <HomePage />,
-            },
-            {
-                path: "/todos/:id",
-                element: <TodoDetailPage />
-            },
-            {
-                path: "/done",
-                element: <DoneListPage />
-            },
-            {
-                path: "/about",
-                element: <AboutUs />
-            },
-        ]
-    }
-]);
+import {routes} from "./routers/BrowserRoutes";
 
 function loadTodos() {
     return api.get("/todos")
