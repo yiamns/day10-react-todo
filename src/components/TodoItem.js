@@ -23,7 +23,7 @@ export function TodoItem(props) {
                 >
                     {item.text}
                 </div>
-                <button className="todo-btn" onClick={onDelete}>
+                <button className="danger-btn" onClick={onDelete}>
                     X
                 </button>
                 {showDetailLink && (

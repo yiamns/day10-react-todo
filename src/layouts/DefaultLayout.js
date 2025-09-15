@@ -1,23 +1,43 @@
-import {Link, Outlet} from "react-router-dom";
+import React from 'react';
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { Menu } from 'antd';
+import { HomeOutlined, CheckCircleOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import './layouts.css';
 
+const items = [
+    {
+        key: '/',
+        icon: <HomeOutlined />,
+        label: <Link to="/">Home</Link>,
+    },
+    {
+        key: '/done',
+        icon: <CheckCircleOutlined />,
+        label: <Link to="/done">Done List</Link>,
+    },
+    {
+        key: '/about',
+        icon: <InfoCircleOutlined />,
+        label: <Link to="/about">About us</Link>,
+    },
+];
+
 export function DefaultLayout() {
+    const location = useLocation();
+
     return (
         <div>
             <header>
-                <ul>
-                    <nav className="nav-bar">
-                        <li><Link to="/" style={{marginRight: 16}}>Home</Link></li>
-                        <li><Link to="/done" style={{marginRight: 16}}>Done List</Link></li>
-                        <li><Link to="/about">About us</Link></li>
-                    </nav>
-                </ul>
-
+                <Menu
+                    mode="horizontal"
+                    selectedKeys={[location.pathname]}
+                    items={items}
+                    style={{ marginBottom: 24 }}
+                />
             </header>
             <main>
-                <Outlet/>
+                <Outlet />
             </main>
         </div>
     );
 }
-export default DefaultLayout;
