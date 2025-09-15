@@ -5,7 +5,7 @@ import { TodoGenerator } from "./TodoGenerator";
 import {api} from "../api/mockApi";
 
 function updateTodo(id, todo) {
-    return api.put(`/todos/${id}`, {done: !todo.done})
+    return api.put(`/todos/${id}`, {text: todo.text, done: !todo.done})
         .then((res) => res.data);
 }
 
@@ -19,7 +19,7 @@ export function TodoList() {
     const handleToggle = (id) => {
         const todo = state.find(t => t.id === id);
         updateTodo(id, todo)
-            .then((todo) => dispatch({ type: "TOGGLE_TODO", payload: { id: todo.id } }));
+            .then((todo) => dispatch({ type: "TOGGLE_TODO", payload: todo }));
     };
 
     const handleDelete = (id) => {

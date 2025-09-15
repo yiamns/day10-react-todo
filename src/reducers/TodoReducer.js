@@ -3,8 +3,8 @@ export function todoReducer(state, action) {
         case "LOAD_TODOS":
             return action.payload;
         case "TOGGLE_TODO":
-            return state.map((value) =>
-                value.id === action.payload.id ? { ...value, done: !value.done } : value
+            return state.map((todo) =>
+                todo.id === action.payload.id ? action.payload : todo
             );
         case "DELETE_TODO":
             return state.filter((todo) => todo.id !== action.payload.id);
