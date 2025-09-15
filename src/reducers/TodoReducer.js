@@ -12,14 +12,7 @@ export function todoReducer(state, action) {
         case "DELETE_TODO":
             return state.filter((todo) => todo.id !== action.payload.id);
         case "ADD_TODO":
-            return [
-                ...state,
-                {
-                    id: state.length === 0 ? 1 : Math.max(...state.map(t => t.id)) + 1,
-                    text: action.payload.text,
-                    done: false
-                }
-            ];
+            return [ ...state, action.payload ];
         default:
             return state;
     }
