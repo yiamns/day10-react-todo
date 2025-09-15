@@ -4,18 +4,26 @@ import { TodoGroup } from "./TodoGroup";
 import { TodoGenerator } from "./TodoGenerator";
 import {api} from "../api/mockApi";
 
+function updateTodo(id, todo) {
+    return api.put(`/todos/${id}`, {done: !todo.done})
+        .then((res) => res.data);
+}
+
+function deleteTodo(id) {
+    return api.delete(`/todos/${id}`);
+}
+
 export function TodoList() {
     const { state, dispatch } = useContext(TodoContext);
 
     const handleToggle = (id) => {
         const todo = state.find(t => t.id === id);
-        api.put(`/todos/${id}`, { done: !todo.done })
-            .then((res) => res.data)
+        updateTodo(id, todo)
             .then((todo) => dispatch({ type: "TOGGLE_TODO", payload: { id: todo.id } }));
     };
 
     const handleDelete = (id) => {
-        api.delete(`/todos/${id}`).then(() => {
+        deleteTodo(id).then(() => {
             dispatch({ type: "DELETE_TODO", payload: { id } });
         });
     };
