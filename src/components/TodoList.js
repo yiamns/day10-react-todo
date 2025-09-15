@@ -16,6 +16,13 @@ export function TodoList() {
 
     return (
         <>
+            <h1>Todo List</h1>
+            {state.length === 0 && (
+                <div className="todo-tip">
+                    Add the things you need to do today...
+                </div>
+            )}
+
             <TodoGroup
                 todos={state}
                 onToggle={handleToggle}
