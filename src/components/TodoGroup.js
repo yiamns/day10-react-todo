@@ -5,6 +5,7 @@ export function TodoGroup(props) {
     const todos = props.todos;
     const onToggle = props.onToggle;
     const onDelete = props.onDelete;
+    const showDetailLink = props.showDetailLink;
 
     if (!todos || todos.length === 0) return null;
     return (
@@ -16,6 +17,7 @@ export function TodoGroup(props) {
                     todo={item}
                     onToggle={() => onToggle(item.id)}
                     onDelete={() => onDelete(item.id)}
+                    showDetailLink={showDetailLink}
                 />
             ))}
         </div>

@@ -5,6 +5,7 @@ export function TodoItem(props) {
     const item = props.item || props.todo;
     const onToggle = props.onToggle;
     const onDelete = props.onDelete;
+    const showDetailLink = props.showDetailLink !== false; // default true
 
     if (!item) return null;
 
@@ -16,7 +17,9 @@ export function TodoItem(props) {
             >
                 {item.text}
             </div>
-            <Link to={`/todos/${item.id}`} style={{ marginRight: 8 }}>Detail</Link>
+            {showDetailLink && (
+                <Link to={`/todos/${item.id}`} style={{ marginRight: 8 }}>Detail</Link>
+            )}
             <button className="todo-btn" onClick={onDelete}>
                 X
             </button>

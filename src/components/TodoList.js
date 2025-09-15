@@ -27,6 +27,7 @@ export function TodoList() {
                 todos={state}
                 onToggle={handleToggle}
                 onDelete={handleDelete}
+                showDetailLink={false}
             />
             <TodoGenerator />
         </>

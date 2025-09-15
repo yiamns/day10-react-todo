@@ -7,7 +7,7 @@ import {ErrorPage} from "./pages/ErrorPage";
 import {HomePage} from "./pages/HomePage";
 import {DefaultLayout} from "./layouts/DefaultLayout";
 import {TodoDetailPage} from "./pages/TodoDetailPage";
-import {NavBar} from "./components/NavBar";
+import {TodoGroup} from "./components/TodoGroup";
 
 function DoneListPage() {
     const { state } = useContext(TodoContext);
@@ -20,12 +20,12 @@ function DoneListPage() {
     return (
         <div>
             <h1>Done List</h1>
-            {doneTodos.map(todo => (
-                <div key={todo.id} className="todo-row">
-                    <div className="todo-text todo-done">{todo.text}</div>
-                    <Link to={`/todos/${todo.id}`} style={{ marginLeft: 8 }}>Detail</Link>
-                </div>
-            ))}
+            <TodoGroup
+                todos={doneTodos}
+                onToggle={() => {}}
+                onDelete={() => {}}
+                showDetailLink={true}
+            />
         </div>
     );
 }
