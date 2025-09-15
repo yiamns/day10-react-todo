@@ -20,6 +20,15 @@ export function TodoList() {
         });
     };
 
+    const handleEditSuccess = (id, newText) => {
+        const todo = state.find(t => t.id === id);
+        if (!todo) return;
+        updateTodo(id, { text: newText, done: todo.done })
+            .then((updated) => {
+                dispatch({ type: "EDIT_TODO", payload: updated });
+            });
+    };
+
     return (
         <>
             <h1>Todo List</h1>
@@ -33,6 +42,7 @@ export function TodoList() {
                 todos={state}
                 onToggle={handleToggle}
                 onDelete={handleDelete}
+                onEditSuccess={handleEditSuccess}
                 showDetailLink={false}
             />
             <TodoGenerator />
