@@ -3,7 +3,7 @@ export function AboutUs() {
         <div>
             <h2>About Us</h2>
             <p>Contact: contact@oocl.com</p>
-            <footer style={{marginTop: 32, borderTop: "1px solid #ccc", paddingTop: 16, color: "#888"}}>
+            <footer className="about-us">
                 &copy; 2025 Todo App.
             </footer>
         </div>
