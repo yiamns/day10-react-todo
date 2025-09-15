@@ -2,19 +2,11 @@ import React, { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
 import { TodoGroup } from "./TodoGroup";
 import { TodoGenerator } from "./TodoGenerator";
-import {api} from "../api/mockApi";
-
-function updateTodo(id, todo) {
-    return api.put(`/todos/${id}`, {text: todo.text, done: !todo.done})
-        .then((res) => res.data);
-}
-
-function deleteTodo(id) {
-    return api.delete(`/todos/${id}`);
-}
+import {useTodoService} from "../useTodoService";
 
 export function TodoList() {
     const { state, dispatch } = useContext(TodoContext);
+    const { updateTodo, deleteTodo } = useTodoService();
 
     const handleToggle = (id) => {
         const todo = state.find(t => t.id === id);
