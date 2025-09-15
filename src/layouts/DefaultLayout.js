@@ -5,11 +5,14 @@ export function DefaultLayout() {
     return (
         <div>
             <header>
-                <nav className="nav-bar">
-                    <Link to="/" style={{marginRight: 16}}>Home</Link>
-                    <Link to="/done" style={{marginRight: 16}}>Done List</Link>
-                    <Link to="/about">About us</Link>
-                </nav>
+                <ul>
+                    <nav className="nav-bar">
+                        <li><Link to="/" style={{marginRight: 16}}>Home</Link></li>
+                        <li><Link to="/done" style={{marginRight: 16}}>Done List</Link></li>
+                        <li><Link to="/about">About us</Link></li>
+                    </nav>
+                </ul>
+
             </header>
             <main>
                 <Outlet/>
@@ -17,3 +20,4 @@ export function DefaultLayout() {
         </div>
     );
 }
+export default DefaultLayout;
