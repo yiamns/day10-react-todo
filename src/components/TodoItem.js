@@ -1,4 +1,4 @@
-// src/components/TodoItem.js
+import { Link } from "react-router-dom";
 import React from "react";
 
 export function TodoItem(props) {
@@ -16,6 +16,7 @@ export function TodoItem(props) {
             >
                 {item.text}
             </div>
+            <Link to={`/todos/${item.id}`} style={{ marginRight: 8 }}>Detail</Link>
             <button className="todo-btn" onClick={onDelete}>
                 X
             </button>
