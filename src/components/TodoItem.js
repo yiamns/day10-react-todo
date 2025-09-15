@@ -21,18 +21,15 @@ export function TodoItem(props) {
 
     const { updateTodo } = useTodoService();
 
-    // 打开编辑弹窗
     const handleEditClick = () => {
         setEditValue(item.text);
         setEditVisible(true);
     };
 
-    // 确认编辑，发送请求
     const handleEditOk = async () => {
         if (!editValue.trim()) return;
         setLoading(true);
         try {
-            // 只更新 text，done 保持原值
             await updateTodo(item.id, { text: editValue.trim(), done: item.done });
             message.success("Todo updated!");
             setEditVisible(false);
@@ -44,7 +41,6 @@ export function TodoItem(props) {
         }
     };
 
-    // 取消编辑
     const handleEditCancel = () => {
         setEditVisible(false);
     };

@@ -7,7 +7,7 @@ export function useTodoService() {
     }
 
     const updateTodo = (id, todo) => {
-        return api.put(`/todos/${id}`, {text: todo.text, done: !todo.done})
+        return api.put(`/todos/${id}`, {text: todo.text, done: todo.done})
             .then((res) => res.data);
     }
 

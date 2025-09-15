@@ -10,7 +10,7 @@ export function TodoList() {
 
     const handleToggle = (id) => {
         const todo = state.find(t => t.id === id);
-        updateTodo(id, todo)
+        updateTodo(id, { text: todo.text, done: !todo.done })
             .then((todo) => dispatch({ type: "TOGGLE_TODO", payload: todo }));
     };
 
