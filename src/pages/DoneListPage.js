@@ -12,7 +12,7 @@ export function DoneListPage() {
 
     return (
         <div>
-            <h1>Done List</h1>
+            <h2>Done List</h2>
             <TodoGroup
                 todos={doneTodos}
                 onToggle={() => {}}

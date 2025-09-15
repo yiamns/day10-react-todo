@@ -6,14 +6,17 @@ import {TodoItem} from "../components/TodoItem";
 export function TodoDetailPage() {
     const {id} = useParams();
     const {state} = useContext(TodoContext);
-    const todo = state.filter((t) => {
-        return t.id === id});
+    const todoId = Array.isArray(id) ? id[0] : id;
+    const todo = state.find((t) => String(t.id) === String(todoId));
 
-    if (todo.length === 0) {
+    if (!todo) {
         return <div>Not Found Todo</div>;
     }
 
-    return <div>
-        <TodoItem todo={todo[0]} index={id}/>
-    </div>;
+    return (
+        <div className="done-detail-container">
+            <div className="done-detail-text">{todo.text}</div>
+        </div>
+    );
 }
+

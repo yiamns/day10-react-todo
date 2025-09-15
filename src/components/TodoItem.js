@@ -57,23 +57,32 @@ export function TodoItem(props) {
                 <div
                     className={textClass}
                     onClick={onToggle}
+                    style={{ flex: 1 }}
                 >
                     {item.text}
                 </div>
-                <button className="danger-btn" onClick={onDelete}>
-                    X
-                </button>
-                <Button
-                    type="default"
-                    size="small"
-                    style={{ marginLeft: 8 }}
-                    onClick={handleEditClick}
-                >
-                    Edit
-                </Button>
-                {showDetailLink && (
-                    <Link to={`/todos/${item.id}`} style={{marginLeft: 8}}>Detail</Link>
-                )}
+                <div className="todo-actions">
+                    <button className="danger-btn" onClick={onDelete}>
+                        X
+                    </button>
+                    <Button
+                        type="default"
+                        size="small"
+                        style={{ marginLeft: 8 }}
+                        onClick={handleEditClick}
+                    >
+                        Edit
+                    </Button>
+                    {showDetailLink && (
+                        <Link
+                            to={`/todos/${item.id}`}
+                            className="detail-link"
+                            style={{ marginLeft: 8 }}
+                        >
+                            Detail
+                        </Link>
+                    )}
+                </div>
 
                 <Modal
                     title="Edit Todo"

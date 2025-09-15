@@ -7,17 +7,17 @@ import './layouts.css';
 const items = [
     {
         key: '/',
-        icon: <HomeOutlined />,
+        icon: <HomeOutlined style={{ fontSize: '20px' }} />,
         label: <Link to="/">Home</Link>,
     },
     {
         key: '/done',
-        icon: <CheckCircleOutlined />,
+        icon: <CheckCircleOutlined style={{ fontSize: '20px' }} />,
         label: <Link to="/done">Done List</Link>,
     },
     {
         key: '/about',
-        icon: <InfoCircleOutlined />,
+        icon: <InfoCircleOutlined style={{ fontSize: '20px' }} />,
         label: <Link to="/about">About us</Link>,
     },
 ];
@@ -32,7 +32,7 @@ export function DefaultLayout() {
                     mode="horizontal"
                     selectedKeys={[location.pathname]}
                     items={items}
-                    style={{ marginBottom: 24 }}
+                    className="nav-bar"
                 />
             </header>
             <main>
