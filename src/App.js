@@ -37,11 +37,15 @@ const routes = createBrowserRouter([
     }
 ]);
 
+function loadTodos() {
+    return api.get("/todos")
+        .then(res => res.data);
+}
+
 function App() {
     const [state, dispatch] = useReducer(todoReducer, []);
     useEffect(() => {
-        api.get("/todos")
-            .then(res => res.data)
+        loadTodos()
             .then(todos => dispatch({ type: "LOAD_TODOS", payload: todos}))
     }, []);
     return (
