@@ -1,29 +1,18 @@
-import {useContext} from "react";
+import React from "react";
+import { TodoItem } from "./TodoItem";
 
-import {TodoContext} from "../contexts/TodoContext";
-
-export function TodoGroup() {
-    const {state, dispatch} = useContext(TodoContext);
-    if (state.length === 0) return null;
+export function TodoGroup({ todos, onToggle, onDelete }) {
+    if (todos.length === 0) return null;
     return (
         <div>
-            {state.map((item) => (
-                <div key={item.id} className="todo-row">
-                    <div
-                        className={`todo-text${item.done ? " todo-done" : ""}`}
-                        onClick={() => dispatch({type: 'TOGGLE_TODO', payload: {id: item.id}})}
-                    >
-                        {item.text}
-                    </div>
-                    <button
-                        className="todo-btn"
-                        onClick={() => dispatch({type: 'DELETE_TODO', payload: {id: item.id}})}
-                    >
-                        X
-                    </button>
-                </div>
+            {todos.map((item) => (
+                <TodoItem
+                    key={item.id}
+                    item={item}
+                    onToggle={() => onToggle(item.id)}
+                    onDelete={() => onDelete(item.id)}
+                />
             ))}
         </div>
     );
 }
-
