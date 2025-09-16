@@ -43,7 +43,7 @@ export function TodoList() {
                 onToggle={handleToggle}
                 onDelete={handleDelete}
                 onEditSuccess={handleEditSuccess}
-                showDetailLink={false}
+                showDetailLink={true}
             />
             <TodoGenerator />
         </>

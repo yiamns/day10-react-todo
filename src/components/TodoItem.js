@@ -9,7 +9,7 @@ export function TodoItem(props) {
     const item = props.item || props.todo;
     const onToggle = props.onToggle;
     const onDelete = props.onDelete;
-    const onEditSuccess = props.onEditSuccess; // 新增，编辑成功后回调
+    const onEditSuccess = props.onEditSuccess;
     const showDetailLink = props.showDetailLink !== false;
     const noStrikethrough = props.noStrikethrough;
     const hideDelete = props.hideDelete;
