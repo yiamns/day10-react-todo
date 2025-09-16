@@ -20,7 +20,7 @@ export function DoneListPage() {
                 showDetailLink={true}
                 noStrikethrough={true}
                 hideDelete={true}
-                hideEdit={true}
+                hideEdit={false}
             />
         </div>
     );
